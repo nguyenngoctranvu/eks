@@ -18,7 +18,7 @@ helm upgrade -i kibana kibana -n logging
 ```
 ## Install filebeat with namespace logging
 ```
-helm upgrade -i kibana kibana -n logging 
+helm upgrade -i filebeat filebeat -n logging 
 ```
 
 ## Enabling security
