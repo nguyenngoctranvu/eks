@@ -37,7 +37,7 @@ Built-in users passwords can be setup with the following command:
 bin/elasticsearch-setup-passwords interactive
 ```
 
-# Reference
+## Reference
 Setup authentication elasticsearch
 ```
 https://www.elastic.co/blog/elasticsearch-security-configure-tls-ssl-pki-authentication
