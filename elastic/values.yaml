@@ -1,0 +1,19 @@
+image:
+  tag: latest
+ingress:
+  enabled: false
+  host: "elastics_host_address"
+service:
+  type: ClusterIP
+rbac:
+  enable: false
+resources:
+  limits:
+    cpu: 2000m
+    memory: 1800Mi
+  requests:
+    cpu: 500m
+    memory: 1600Mi
+Persistence:
+  accessMode: ReadWriteOnce
+  size: 100Gi

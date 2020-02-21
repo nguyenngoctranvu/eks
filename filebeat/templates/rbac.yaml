@@ -1,0 +1,42 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "filebeat.name" . }}
+  labels: 
+    app: {{ template "filebeat.name" . }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - pods
+  - pods/logs
+  verbs:
+  - get
+  - list
+  - watch
+  
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "filebeat.name" . }}
+  labels: 
+    app: {{ template "filebeat.name" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "filebeat.name" . }}
+  namespace: logging
+roleRef:
+  kind: ClusterRole
+  name: {{ template "filebeat.name" . }}
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ template "filebeat.name" . }}
+  labels: 
+    app: {{ template "filebeat.name" . }}

@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "kibana.fullname" . }}
+  labels:
+    app: {{ template "kibana.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "kibana.name" . }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "kibana.name" . }}
+    spec:
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:7.0.1
+        ports:
+        - containerPort: 5601
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        volumeMounts:
+        - name: config
+          mountPath: /usr/share/kibana/config/kibana.yml
+          subPath: kibana.yml
+      volumes:
+      - name: config
+        configMap:
+          name: kibana-config
+        

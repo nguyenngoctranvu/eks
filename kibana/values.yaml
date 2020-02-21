@@ -1,0 +1,16 @@
+image:
+  tag: latest
+ingress:
+  enabled: true
+  host: kibana_address
+service:
+  type: ClusterIP
+rbac:
+  enable: true
+resources:
+  limits:
+    cpu: 300m
+    memory: 650Mi
+  requests:
+    cpu: 100m
+    memory: 500Mi

@@ -1,0 +1,19 @@
+image:
+  tag: latest
+ingress:
+  enabled: false
+  host: 
+service:
+  type: ClusterIP
+rbac:
+  enable: true
+resources:
+  limits:
+    cpu: 200m
+    memory: 100Mi
+  requests:
+    cpu: 100m
+    memory: 80Mi
+Persistence:
+  accessMode: ReadWriteOnce
+  size: 100Gi
